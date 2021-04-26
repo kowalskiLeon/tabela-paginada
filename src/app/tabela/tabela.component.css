@@ -1,0 +1,25 @@
+.cabecalho{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #212121;
+    border-top: 2px solid #212121;
+    background-color: #c2ffe9;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+}
+
+.linha{
+    border: 0.1mm solid;
+    background-color: #defff3;
+    font-weight: lighter;
+    text-align: center;
+    
+}
+
+.linha-impar{
+    border: 0.1mm solid;
+    background-color: #c2ffe9;
+    font-weight: lighter;
+    text-align: center;
+}

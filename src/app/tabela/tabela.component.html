@@ -1,0 +1,53 @@
+<div class="container-fluid mx-3 my-2">
+    <div class="row">
+        <div class="col">
+            <h2 *ngIf = 'titulo'>{{titulo}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4 *ngIf = 'subtitulo'>{{subtitulo}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <p *ngIf = 'legenda'class="my-3">{{legenda}}</p>
+    </div>
+    <div class="container-fluid " *ngIf="colunas.length > 0 && dados.length > 0; else elseBlock">
+        <div class="row mx-auto">
+            <div class="col" *ngFor = "let coluna of colunas; index as i">
+                <div class="row ">
+                    <div class="col cabecalho">{{coluna}}</div>
+                </div>
+                <div class="row" *ngFor = "let dado of dados; index as j">
+                    <div class="col linha" *ngIf="j%2 == 0; else elseLinha">{{dado[i]}}</div>
+                    <ng-template #elseLinha>
+                        <div class="col linha-impar">{{dado[i]}}</div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf='tamanho < dados.length'>
+            <div class="col">
+                <button>Primeiro</button>
+            </div>
+            <div class="col">
+                <button>Voltar</button>
+            </div>
+            <div class="col">
+                <h3>1/1</h3>
+            </div>
+            <div class="col">
+                <button>Proximo</button>
+            </div>
+            <div class="col">
+                <button>Último</button>
+            </div>
+        </div>
+    </div>
+    <ng-template class="container-fluid" #elseBlock>
+        <div class="row">
+            <h3 class="mx-3">Não foram encontrados dados para esta tabela</h3>
+        </div>
+    </ng-template>
+</div>
+
