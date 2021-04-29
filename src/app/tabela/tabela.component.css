@@ -23,3 +23,23 @@
     font-weight: lighter;
     text-align: center;
 }
+
+
+.button-mov{
+    background-color: transparent;
+    border: unset;
+    color: #212121;
+    transition: 0.2s;
+}
+
+.button-mov:hover{
+    border-radius: 4px;
+    border: unset;
+    color:#7b8a83;
+    transition: 0.2s;
+}
+
+.tabela-paginacao{
+    background-color: transparent !important;
+    border: unset !important;
+}
