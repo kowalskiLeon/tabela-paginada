@@ -43,3 +43,8 @@
     background-color: transparent !important;
     border: unset !important;
 }
+
+.paginacao{
+    background-color: transparent;
+    border: unset;
+}

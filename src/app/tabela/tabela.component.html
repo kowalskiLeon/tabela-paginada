@@ -7,7 +7,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let dado of dadosAtuais[paginaAtual-1]; index as i">
-            <td *ngFor="let linha of dado; index as j">{{linha}}</td>
+            <td *ngFor="let linha of dado; index as j" class="text-center">
+                <p *ngIf= "(colunas[j] == 'Nascimento' || colunas[j] == 'Inclusão') && linha != '-';  else elseBlock">{{linha | date:'dd/MM/yyyy'}}</p>
+                <ng-template #elseBlock><p>{{linha}}</p></ng-template>
+            </td>
         </tr>
     </tbody>
 </table>
@@ -17,20 +20,26 @@
         <tr class="tabela-paginacao">
             <td class="p-0 tabela-paginacao">
                 <button (click)="primeiro()" class=" mx-auto button-mov w-100 text-left align-items-center"
-                    [disabled]="paginaAtual == 1">Primeiro</button>
+                    [disabled]="paginaAtual == 1" style="outline: none;">Primeiro</button>
             </td>
             <td class="p-0 tabela-paginacao">
-                <button (click)="mudarPagina(-1)" class=" mx-auto button-mov  w-100 text-left">Voltar</button>
+                <button (click)="mudarPagina(-1)" class=" mx-auto button-mov w-100 text-left" style="outline: none;">Voltar</button>
             </td>
             <td class="p-0 tabela-paginacao">
-                <p class="text-center  w-100">{{paginaAtual}} / {{numPaginas}}</p>
+                <table class="w-100 ">
+                    <tr class="d-flex justify-content-center tabela-paginacao">
+                        <td *ngFor="let menu of menuInferior" class="paginacao" style="outline: none; width: 48px;">
+                            <button class="btn btn-primary mx-auto px-auto" *ngIf="menu > 0 && menu <= numPaginas" (click)="goToPagina(menu)">{{menu}}</button>
+                        </td>
+                    </tr>
+                </table>
             </td>
             <td  class="p-0 tabela-paginacao" style="align-items: center;">
-                <button (click)="mudarPagina(1)" class=" mx-auto button-mov w-100 text-right">Proximo</button>
+                <button (click)="mudarPagina(1)" class=" mx-auto button-mov w-100 text-right" style="outline: none;">Proximo</button>
             </td>
             <td class="p-0 tabela-paginacao">
                 <button (click)="ultimo()" class="mx-auto button-mov text-right  w-100"
-                    [disabled]="paginaAtual == numPaginas">Último</button>
+                    [disabled]="paginaAtual == numPaginas" style="outline: none;">Último</button>
             </td>
         </tr>
     </tbody>
